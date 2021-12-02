@@ -1,3 +1,6 @@
+input.onButtonPressed(Button.A, function () {
+	
+})
 radio.onReceivedString(function (receivedString) {
     if (true) {
         while (true) {
