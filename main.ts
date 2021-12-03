@@ -1,6 +1,4 @@
-input.onButtonPressed(Button.A, function () {
-	
-})
+let value = 0
 radio.onReceivedString(function (receivedString) {
     if (true) {
         while (true) {
@@ -38,9 +36,9 @@ radio.onReceivedString(function (receivedString) {
     }
 })
 basic.forever(function () {
-    let Pressure_level = 0
     radio.setGroup(80)
-    if (Pressure_level < 500) {
+    if (value < 300) {
+        value = pins.analogReadPin(AnalogPin.P1)
         while (true) {
             radio.sendString("!Intruder!")
             for (let index = 0; index < 5; index++) {
@@ -48,7 +46,7 @@ basic.forever(function () {
                 music.rest(music.beat(BeatFraction.Whole))
             }
         }
-    } else if (Pressure_level > 500) {
+    } else if (value > 300) {
         for (let index = 0; index < 4; index++) {
             basic.showString("(Safe)")
             basic.clearScreen()
